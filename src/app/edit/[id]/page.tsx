@@ -2,15 +2,14 @@ import VendorForm from '@/components/VendorForm';
 import api from '@/lib/api';
 
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
 
-
-export default async function EditVendorPage({ params }: Props) {
+export default async function EditVendorPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const res = await api.get(`/vendors/${params.id}`);
+
   return (
     <main className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm p-8 transition hover:shadow-md">
