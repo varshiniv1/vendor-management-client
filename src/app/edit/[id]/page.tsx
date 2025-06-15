@@ -1,7 +1,21 @@
 import VendorForm from '@/components/VendorForm';
 import api from '@/lib/api';
+import { Metadata } from 'next';
 
-export default async function EditVendorPage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  return {
+    title: `Edit Vendor ${params.id}`,
+  };
+}
+
+
+export default async function EditVendorPage({ params }: PageProps) {
   const res = await api.get(`/vendors/${params.id}`);
   return (
     <main className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
