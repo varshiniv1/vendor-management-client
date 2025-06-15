@@ -1,13 +1,13 @@
-/*import VendorForm from '@/components/VendorForm';
+import VendorForm from '@/components/VendorForm';
 import api from '@/lib/api';
 
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
 
-
-export default async function EditVendorPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function EditVendorPage({ params }: PageProps) {
   const res = await api.get(`/vendors/${params.id}`);
 
   return (
@@ -19,59 +19,3 @@ export default async function EditVendorPage({
     </main>
   );
 }
-  */
-
-/*import VendorForm from '@/components/VendorForm';
-import api from '@/lib/api';
-import { Vendor } from '@/types/vendor';
-import { notFound } from 'next/navigation';
-
-type Props = {
-  params: {
-    id: string;
-  };
-};
-
-export default async function EditVendorPage({ params }: Props) {
-  try {
-    const res = await api.get(`/vendors/${params.id}`);
-    const vendor: Vendor = res.data;
-
-    return (
-      <main className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm p-8 transition hover:shadow-md">
-          <h1 className="text-2xl font-bold text-gray-800 mb-6">Edit Vendor</h1>
-          <VendorForm initialData={vendor} />
-        </div>
-      </main>
-    );
-  } catch (error) {
-    console.error('Error loading vendor:', error);
-    // Optional: Show 404 page
-    notFound();
-  }
-}
-  */
- import VendorForm from '@/components/VendorForm';
-import api from '@/lib/api';
-
-type PageParams = {
-  params: {
-    id: string;
-  };
-};
-
-export default async function EditVendorPage({ params }: PageParams) {
-  const res = await api.get(`/vendors/${params.id}`);
-
-  return (
-    <main className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm p-8 transition hover:shadow-md">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">Edit Vendor</h1>
-        <VendorForm initialData={res.data} />
-      </div>
-    </main>
-  );
-}
-
-
